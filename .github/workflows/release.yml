@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - '!v*-beta*'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      gradle_task: assembleRelease
+      apk_directory: app/build/outputs/apk/release
+      prerelease: false
+      make_latest: true
+    secrets: inherit

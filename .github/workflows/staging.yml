@@ -1,0 +1,24 @@
+name: Staging
+
+on:
+  push:
+    tags:
+      - 'v*-beta*'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: staging-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      gradle_task: assembleStaging
+      apk_directory: app/build/outputs/apk/staging
+      prerelease: true
+      make_latest: false
+    secrets: inherit

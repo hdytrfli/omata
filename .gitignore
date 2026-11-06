@@ -1,0 +1,36 @@
+# Gradle files
+.gradle/
+build/
+.kotlin/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+output.json
+
+# IntelliJ
+*.iml
+.idea/*
+
+# Keystore files
+*.jks
+*.keystore
+
+# Local signing material
+/keystore/
+
+# Local-only tooling and notes
+/local/
+
+# Icon generation inputs/artifacts (not part of the app)
+/tools/
+/design/
